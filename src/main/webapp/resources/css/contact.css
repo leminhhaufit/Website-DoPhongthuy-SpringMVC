@@ -1,0 +1,91 @@
+#contactForm .col-md-6{
+    border: 1px solid #e6e6e6;
+}
+
+#containerForm{
+    padding-bottom:40px; 
+}
+#contactInfor{
+    padding: 100px;
+}
+#contactInfor p{
+    padding-bottom: 30px;
+}
+#contactInfor p a{
+    text-decoration: none;
+}
+#banner{
+    background-image: url('../www/banner (1).jpg');
+    height: 300px;
+  
+    background-position: 50% 50%;
+}
+#banner2{
+    background-image: url('../www/cart(1).jpg');
+    height: 350px;
+  
+    background-position: 50% 50%;
+}
+#banner h2{
+    color:black;
+    text-transform: uppercase;
+    margin: auto;
+    padding-top:140px;
+    padding-bottom:140px;  
+}
+#banner h1{
+    color:black;
+    text-transform: uppercase;
+    margin: auto;
+    padding-top:140px;
+    padding-bottom:140px;  
+}
+table tr td{
+	padding:10px;
+}
+#hinhcart{
+	width:90px;
+	height: 90px;
+}
+input[type=text]{
+	width:40px;
+	
+}
+#radioDC{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	
+}
+thead{
+	text-transform: uppercase;
+	text-align:center;
+}
+#cartcheckout{
+	width:300px;
+	height: 300px;
+}
+#checkoutimg{
+	width:30%;
+	height: 500px;
+	float:left;
+}
+#checkoutinfo{
+	width:100%;
+	height: auto;
+	
+}
+#checkoutbtn{
+	width:100%;
+	height: auto;
+	
+}
+#codebill{
+	display:block;
+	width:100px;
+	height: 50px;
+	background-color:green;
+}
+#ship{
+	width:34px;
+	height: 34px;
+}	

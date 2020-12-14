@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven>
+		<message-converters register-defaults="true">
+			<beans:bean
+				class="org.springframework.http.converter.StringHttpMessageConverter">
+				<beans:property name="supportedMediaTypes">
+					<beans:value>text/plain;charset=UTF-8</beans:value>
+				</beans:property>
+			</beans:bean>
+		</message-converters>
+
+
+	</annotation-driven>
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<!--Connect to database -->
+	<beans:bean id="myDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></beans:property>
+		<beans:property name="url"
+			value="jdbc:sqlserver://localhost:1433;databaseName=bandophongthuy"></beans:property>
+		<beans:property name="username" value="sa"></beans:property>
+		<beans:property name="password" value="sapassword"></beans:property>
+	</beans:bean>
+
+	<!--Bean to create Session Factory -->
+	<beans:bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="myDataSource" />
+		<beans:property name="packagesToScan"
+			value="app.baitapnhom.entities" />
+		<beans:property name="annotatedClasses">
+			<beans:list>
+				<beans:value>app.baitapnhom.entities.ChiTietHoaDon</beans:value>
+				<beans:value>app.baitapnhom.entities.ChiTietHoaDonID</beans:value>
+				<beans:value>app.baitapnhom.entities.DiaChi</beans:value>
+				<beans:value>app.baitapnhom.entities.HoaDon</beans:value>
+				<beans:value>app.baitapnhom.entities.KhachHang</beans:value>
+				<beans:value>app.baitapnhom.entities.LoaiSanPham</beans:value>
+				<beans:value>app.baitapnhom.entities.NhaCungCap</beans:value>
+				<beans:value>app.baitapnhom.entities.NhanVien</beans:value>
+				<beans:value>app.baitapnhom.entities.NuocSanXuat</beans:value>
+				<beans:value>app.baitapnhom.entities.SanPham</beans:value>
+				<beans:value>app.baitapnhom.entities.TaiKhoan</beans:value>
+			</beans:list>
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect
+				</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+	<!-- Step 3: Setup Hibernate transaction manager -->
+	<beans:bean id="myTransactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<beans:property name="sessionFactory"
+			ref="sessionFactory" />
+	</beans:bean>
+
+	<!-- Step 4: Enable configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven
+		transaction-manager="myTransactionManager" />
+
+	<context:component-scan
+		base-package="app.baitapnhom." />
+
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="100000000" />
+	</beans:bean>
+
+
+
+</beans:beans>

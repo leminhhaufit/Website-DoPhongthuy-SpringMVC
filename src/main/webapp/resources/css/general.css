@@ -1,0 +1,49 @@
+footer {
+    padding: 50px 90px;
+    background-color:black;
+}
+footer h4{
+    color: antiquewhite;
+   
+}
+footer a,p{
+    color:#b2b2b2;
+    text-decoration: none;
+}
+#emailSub{
+    background-color: black;
+    margin-bottom: 20px;
+    border:1px solid black; 
+    border-bottom: 1px solid white;
+}
+#btnSub{
+    width: 150px;
+    border-radius: 18px;
+}
+.margin-b-20{
+    margin-bottom: 20px;
+}
+.margin-t-50{
+    margin-top: 50px;
+}
+.padding-t-60{
+    padding-top: 60px;
+}
+
+#header{
+    position:fixed;
+    width:100%;
+    z-index: 100;
+}
+#header span{
+    margin-left:50px;
+}
+.margin-b-50{
+    margin-bottom:50px;
+}
+
+
+
+ul li{
+	list-style-type: none;
+}

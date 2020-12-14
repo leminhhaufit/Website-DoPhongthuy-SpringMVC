@@ -1,0 +1,12 @@
+#cont-loginform{
+    padding-top: 100px; 
+    margin-bottom: 40px;
+}
+#cardForm{
+    margin: auto;
+}
+#cardForm .card-header{
+    text-align: center;
+    background-color: black;
+    color: antiquewhite;
+}
